@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<http pattern="/login.do" security="none"></http>
+	
+	<http auto-config="true" access-denied-page="/login.do?denied=true">
+		<intercept-url pattern="/-*" access="ROLE_USER" />
+		<form-login login-page="/login.do"
+			authentication-success-handler-ref="loginSuccessHandler"
+			authentication-failure-handler-ref="loginFailureHandler" />
+		<logout logout-success-url="/login.do" />
+	</http>
+
+	<beans:bean id="loginSuccessHandler"
+		class="com.dragonsnest.auth.handler.LoginSuccessHandler"></beans:bean>
+	<beans:bean id="loginFailureHandler"
+		class="com.dragonsnest.auth.handler.LoginFailureHandler"></beans:bean>
+
+	<beans:bean id="authenticationService" class="com.dragonsnest.auth.AuthenticationService"></beans:bean>
+	<beans:bean id="encoder"
+		class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="authenticationService">
+			<password-encoder ref="encoder" />
+		</authentication-provider>
+	</authentication-manager>
+
+
+	<global-method-security secured-annotations="enabled"
+		jsr250-annotations="enabled" />
+</beans:beans>
