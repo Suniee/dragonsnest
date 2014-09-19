@@ -6,20 +6,20 @@
 
 	<http pattern="/login.do" security="none"></http>
 	
-	<http auto-config="true" access-denied-page="/login.do?denied=true">
+	<http auto-config="true" access-denied-page="/">
 		<intercept-url pattern="/-*" access="ROLE_USER" />
-		<form-login login-page="/login.do"
+		<form-login login-page="/login.nest"
 			authentication-success-handler-ref="loginSuccessHandler"
 			authentication-failure-handler-ref="loginFailureHandler" />
-		<logout logout-success-url="/login.do" />
+		<logout logout-success-url="/login.nest" />
 	</http>
 
 	<beans:bean id="loginSuccessHandler"
-		class="com.dragonsnest.auth.handler.LoginSuccessHandler"></beans:bean>
+		class="com.dragonsnest.security.handler.LoginSuccessHandler"></beans:bean>
 	<beans:bean id="loginFailureHandler"
-		class="com.dragonsnest.auth.handler.LoginFailureHandler"></beans:bean>
+		class="com.dragonsnest.security.handler.LoginFailureHandler"></beans:bean>
 
-	<beans:bean id="authenticationService" class="com.dragonsnest.auth.AuthenticationService"></beans:bean>
+	<beans:bean id="authenticationService" class="com.dragonsnest.security.auth.AuthenticationService"></beans:bean>
 	<beans:bean id="encoder"
 		class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
 

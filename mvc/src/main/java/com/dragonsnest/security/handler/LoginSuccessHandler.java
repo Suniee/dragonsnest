@@ -1,4 +1,4 @@
-package com.dragonsnest.auth.handler;
+package com.dragonsnest.security.handler;
 
 import java.io.IOException;
 
@@ -14,6 +14,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler
 {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth) throws IOException, ServletException
     {
-     response.sendRedirect(request.getContextPath() + "/index.do");
+     response.sendRedirect(request.getContextPath() + "/index.nest");
     }
 }

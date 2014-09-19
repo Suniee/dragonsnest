@@ -1,4 +1,4 @@
-package com.dragonsnest.auth;
+package com.dragonsnest.security.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.dragonsnest.model.Manager;
 
 
 public class AuthenticateUser implements UserDetails
@@ -17,6 +19,7 @@ public class AuthenticateUser implements UserDetails
 	private static final long serialVersionUID = 1L;
 	private String username;
     private String password;
+    private Manager manager;
     
     public Collection<? extends GrantedAuthority> getAuthorities()
     {
@@ -46,7 +49,19 @@ public class AuthenticateUser implements UserDetails
         return username;
     }
     
-    public boolean isAccountNonExpired() 
+    public Manager getManager() {
+		return manager;
+	}
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public boolean isAccountNonExpired() 
     {
         return true;
     }

@@ -1,4 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page session="false"%>
 <!doctype html>
 <html ng-app="todoApp">
@@ -12,6 +13,7 @@
 	<h2>Todo123</h2>
 
 	<P>The time on the server is ${serverTime}.</P>
+	<P> Welcome! ${userName}</P>
 	<div ng-controller="TodoController">
 		<span>{{remaining()}} of {{todos.length}} remaining</span> [ <a
 			href="" ng-click="archive()">archive</a> ]
@@ -26,5 +28,7 @@
 				type="submit" value="add">
 		</form>
 	</div>
+	
+	<a href="j_spring_security_logout">logout</a>
 </body>
 </html>

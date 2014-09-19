@@ -6,6 +6,8 @@ public class Manager {
 	String name;
 	String password;
 	String phone;
+	String role;
+	
 	public int getPid() {
 		return pid;
 	}
@@ -37,6 +39,12 @@ public class Manager {
 		this.phone = phone;
 	}
 	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	@Override
 	public String toString() {
 		return "Manager [pid=" + pid + ", id=" + id + ", name=" + name
