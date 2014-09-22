@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-	<http pattern="/login.do" security="none"></http>
+	<http pattern="/login.nest" security="none"></http>
 	
 	<http auto-config="true" access-denied-page="/">
-		<intercept-url pattern="/-*" access="ROLE_USER" />
+		<intercept-url pattern="/*" access="ROLE_USER" />
 		<form-login login-page="/login.nest"
 			authentication-success-handler-ref="loginSuccessHandler"
 			authentication-failure-handler-ref="loginFailureHandler" />
@@ -20,8 +20,7 @@
 		class="com.dragonsnest.security.handler.LoginFailureHandler"></beans:bean>
 
 	<beans:bean id="authenticationService" class="com.dragonsnest.security.auth.AuthenticationService"></beans:bean>
-	<beans:bean id="encoder"
-		class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+	<beans:bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="authenticationService">

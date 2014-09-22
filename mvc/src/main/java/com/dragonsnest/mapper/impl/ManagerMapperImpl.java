@@ -17,7 +17,8 @@ public interface ManagerMapperImpl extends ManagerMapper{
 			@Result(property="id", column="ID"),
 			@Result(property="password", column="PASSWORD"),
 			@Result(property="name", column="NAME"),
-			@Result(property="phone", column="PHONE")
+			@Result(property="phone", column="PHONE"),
+			@Result(property="role", column="ROLE")
 	})
 	Manager getUser(@Param("id") String id);
 }

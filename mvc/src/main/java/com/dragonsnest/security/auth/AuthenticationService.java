@@ -8,10 +8,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -41,23 +39,26 @@ public class AuthenticationService implements UserDetailsService
 		return ret;
 	}*/
 	
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {
         StandardPasswordEncoder encoder = new StandardPasswordEncoder();
         
         AuthenticateUser user = new AuthenticateUser();
         
-        logger.debug("user ["+userName+"]");
-        Manager manager = service.getUser(userName);
+        Manager manager = service.getUser(username);
         
-        user.setUsername(userName);
+        if(manager == null) {
+        	throw new UsernameNotFoundException(username);
+        }
+        
+        logger.debug("manager [{}]", manager.toString());
+        
+        user.setUsername(username);
         user.setPassword(encoder.encode(manager.getPassword()));
-        
         user.setManager(manager);
         
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		authorities.add(new SimpleGrantedAuthority(manager.getRole()));
-      
 		
         return user;
     }
