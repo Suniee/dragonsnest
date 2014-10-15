@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.dragonsnest.model.Manager;
+import com.dragonsnest.model.User;
 
 
 public class AuthenticateUser implements UserDetails
@@ -19,7 +19,7 @@ public class AuthenticateUser implements UserDetails
 	private static final long serialVersionUID = 1L;
 	private String username;
     private String password;
-    private Manager manager;
+    private User manager;
     
     public Collection<? extends GrantedAuthority> getAuthorities()
     {
@@ -49,11 +49,11 @@ public class AuthenticateUser implements UserDetails
         return username;
     }
     
-    public Manager getManager() {
+    public User getManager() {
 		return manager;
 	}
 
-	public void setManager(Manager manager) {
+	public void setManager(User manager) {
 		this.manager = manager;
 	}
 

@@ -1,6 +1,8 @@
 package com.dragonsnest.model;
 
-public class Manager {
+import org.springframework.stereotype.Repository;
+
+public class User {
 	int pid;
 	String id;
 	String name;

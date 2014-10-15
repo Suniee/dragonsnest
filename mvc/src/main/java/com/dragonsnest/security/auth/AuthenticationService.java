@@ -16,8 +16,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
-import com.dragonsnest.model.Manager;
-import com.dragonsnest.service.ManagerService;
+import com.dragonsnest.model.User;
+import com.dragonsnest.service.UserService;
 
 @Repository("AuthRepository")
 public class AuthenticationService implements UserDetailsService
@@ -25,7 +25,7 @@ public class AuthenticationService implements UserDetailsService
 	private static final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
 	
 	@Autowired
-	ManagerService service;
+	UserService service;
 	
 	/*public static AuthenticateUser getUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -45,7 +45,7 @@ public class AuthenticationService implements UserDetailsService
         
         AuthenticateUser user = new AuthenticateUser();
         
-        Manager manager = service.getUser(username);
+        User manager = service.selectUser(username);
         
         if(manager == null) {
         	throw new UsernameNotFoundException(username);
