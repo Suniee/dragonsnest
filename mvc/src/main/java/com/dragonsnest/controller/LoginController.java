@@ -61,7 +61,8 @@ public class LoginController {
 	 */
 	@RequestMapping(value="/loginfailed.nest", method=RequestMethod.GET)
 	public String loginFailed(@RequestParam Map<String, Object> param, ModelMap model) throws Throwable {
-		return "loginfailed";
+		model.addAttribute("isLoginFailed", true);
+		return "login";
 	}
 	
 	

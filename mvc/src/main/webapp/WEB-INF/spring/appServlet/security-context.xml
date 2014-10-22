@@ -5,6 +5,7 @@
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<http pattern="/login.nest" security="none"></http>
+	<http pattern="/loginfailed.nest" security="none"></http>
 	<http pattern="/signup.nest" security="none"></http>
 	
 	<http auto-config="true" access-denied-page="/">
