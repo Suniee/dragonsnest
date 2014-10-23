@@ -4,9 +4,11 @@
 <!doctype html>
 <html ng-app="todoApp">
 	<head>
+		<title>WELCOME</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
 		<script src="todo.js"></script>
 		<link rel="stylesheet" href="todo.css">
+		<link rel="shortcut icon" href="./images/dragon.ico">
 	</head>
 	<body>
 		<h2>Todo123</h2>
