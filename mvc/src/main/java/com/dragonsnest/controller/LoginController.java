@@ -48,8 +48,22 @@ public class LoginController {
 	 */
 	@RequestMapping(value={"/", "/login.nest"}, method=RequestMethod.GET) 
 	public String login(@RequestParam Map<String, Object> param, ModelMap model, Locale locale) throws Throwable {
-//		logger.info("Welcome home! The client locale is {}.", locale);
+		logger.info("Access to Login client locale is [{}].", locale);
 		return "login";
+	}
+	
+	/**
+	 * 로그인원본 화면 호출
+	 * @param param
+	 * @param model
+	 * @param locale
+	 * @return 
+	 * @throws Throwable
+	 */
+	@RequestMapping(value={"/", "/login_org.nest"}, method=RequestMethod.GET) 
+	public String loginOrg(@RequestParam Map<String, Object> param, ModelMap model, Locale locale) throws Throwable {
+//		logger.info("Welcome home! The client locale is {}.", locale);
+		return "login_org";
 	}
 	
 	/**
