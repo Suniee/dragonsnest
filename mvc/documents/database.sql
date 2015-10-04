@@ -14,5 +14,6 @@ create table USERS (
 	ID varchar(50) not null,
 	PASSWORD varchar(100) not null,
 	NAME varchar(50) not null,
-	Phone varchaR(11)
+	PHONE varchar(11),
+	ROLE varchar(10)
  );

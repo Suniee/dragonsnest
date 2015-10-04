@@ -56,7 +56,7 @@
 										</tr>
 									</table>
 								</form> --%>
-					<form class="m-t" role="form" name="login" action="j_spring_security_check">
+					<form class="m-t" role="form" name="login" action="j_spring_security_check" method="post">
 						<div class="form-group">
 							<input name="j_username" type="email" class="form-control" placeholder="Username" required="">
 						</div>

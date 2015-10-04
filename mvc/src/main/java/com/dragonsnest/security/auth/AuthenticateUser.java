@@ -23,7 +23,7 @@ public class AuthenticateUser implements UserDetails
     
     public Collection<? extends GrantedAuthority> getAuthorities()
     {
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();    
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
         
         return authorities;

@@ -8,7 +8,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.junit.runner.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.dragonsnest.model.User;
 import com.dragonsnest.service.UserService;
@@ -46,39 +49,18 @@ public class LoginController {
 	 * @return 
 	 * @throws Throwable
 	 */
-	@RequestMapping(value={"/", "/login.nest"}, method=RequestMethod.GET) 
-	public String login(@RequestParam Map<String, Object> param, ModelMap model, Locale locale) throws Throwable {
+	@RequestMapping(value={"/", "/login.nest"}) 
+	public ModelAndView login(@RequestParam Map<String, Object> param, HttpServletRequest request,
+												ModelMap model, Locale locale) throws Throwable {
+		HttpSession session = request.getSession();
 		logger.info("Access to Login client locale is [{}].", locale);
-		return "login";
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("login");
+		mav.addObject("isLoginFailed", session.getAttribute("isLoginFailed"));
+		session.invalidate();
+		return mav;
 	}
-	
-	/**
-	 * 로그인원본 화면 호출
-	 * @param param
-	 * @param model
-	 * @param locale
-	 * @return 
-	 * @throws Throwable
-	 */
-	@RequestMapping(value={"/", "/login_org.nest"}, method=RequestMethod.GET) 
-	public String loginOrg(@RequestParam Map<String, Object> param, ModelMap model, Locale locale) throws Throwable {
-//		logger.info("Welcome home! The client locale is {}.", locale);
-		return "login_org";
-	}
-	
-	/**
-	 * 로그인 실패 화면 호출
-	 * @param param
-	 * @param model
-	 * @return
-	 * @throws Throwable
-	 */
-	@RequestMapping(value="/loginfailed.nest", method=RequestMethod.GET)
-	public String loginFailed(@RequestParam Map<String, Object> param, ModelMap model) throws Throwable {
-		model.addAttribute("isLoginFailed", true);
-		return "login";
-	}
-	
 	
 	/**
 	 * 메인화면 호출

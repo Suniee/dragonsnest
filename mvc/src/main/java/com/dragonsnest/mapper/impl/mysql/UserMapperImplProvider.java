@@ -9,7 +9,8 @@ public class UserMapperImplProvider {
 		StringBuilder builder = new StringBuilder();
 		String id = null, password = null, name = null, phone = null, role = null;
 		
-		builder.append("SELECT PID, ID, PASSWORD, NAME, PHONE, ROLE FROM USERS ");
+		builder.append("SELECT PID, ID, PASSWORD, NAME, PHONE, ROLE ");
+		builder.append("FROM USERS ");
 		builder.append("WHERE 1=1 ");
 
 		try { id = (String)params.get("id"); } catch(Exception e) {}

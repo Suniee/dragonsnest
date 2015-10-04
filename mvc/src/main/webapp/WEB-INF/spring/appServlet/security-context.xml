@@ -9,11 +9,12 @@
 	<http pattern="/signup.nest" security="none"></http>
 	
 	<http auto-config="true" access-denied-page="/">
-		<intercept-url pattern="/*" access="ROLE_USER" />
+		<intercept-url pattern="/*.nest" access="ROLE_USER" />
+		<intercept-url pattern="/*" access="ROLE_ADMIN" />
 		<form-login login-page="/login.nest"
 			authentication-success-handler-ref="loginSuccessHandler"
 			authentication-failure-handler-ref="loginFailureHandler" />
-		<logout logout-success-url="/login.nest" />
+		<logout logout-success-url="/"/>
 	</http>
 
 	<beans:bean id="loginSuccessHandler"
@@ -33,4 +34,6 @@
 
 	<global-method-security secured-annotations="enabled"
 		jsr250-annotations="enabled" />
+		
+		
 </beans:beans>
