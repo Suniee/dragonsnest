@@ -27,20 +27,20 @@ public interface UserMapperImpl extends UserMapper{
 	})
 	User selectUser(@Param("id") String id);
 	
-	@InsertProvider(type=UserMapperImplProvider.class, method="insertUser")
-	int insertUser(User user);
+//	@InsertProvider(type=UserMapperImplProvider.class, method="insertUser")
+//	int insertUser(User user);
+	
+//	@InsertProvider(type=UserMapperImplProvider.class, method="insertUser")
+//	int insertUser1(
+//			@Param("id") String id, 
+//			@Param("password") String password,
+//			@Param("name") String name,
+//			@Param("phone") String phone, 
+//			@Param("role") String role
+//			);
 	
 	@InsertProvider(type=UserMapperImplProvider.class, method="insertUser")
-	int insertUser1(
-			@Param("id") String id, 
-			@Param("password") String password,
-			@Param("name") String name,
-			@Param("phone") String phone, 
-			@Param("role") String role
-			);
-	
-	@InsertProvider(type=UserMapperImplProvider.class, method="insertUser")
-	int insertUser2(@Param("param") Map<String, Object> params);
+	int insertUser(Map<String, Object> params);
 	
 	@UpdateProvider(type=UserMapperImplProvider.class, method="updateUser")
 	int updateUser(User user);

@@ -12,11 +12,11 @@ public interface UserMapper {
 
 	User selectUser(String id);
 	
-	int insertUser(User user);
+//	int insertUser(User user);
 	
-	int insertUser1(String username, String password, String name, String phone, String role);
+//	int insertUser1(String username, String password, String name, String phone, String role);
 	
-	int insertUser2(Map<String, Object> params);
+	int insertUser(Map<String, Object> params);
 	
 	int updateUser(User user);
 	

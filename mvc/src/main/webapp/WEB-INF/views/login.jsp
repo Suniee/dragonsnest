@@ -5,7 +5,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>WELCOME!</title>
-		<link rel="shortcut icon" href="./images/dragon.ico">
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/dragon.ico">
 		 
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
@@ -71,7 +71,7 @@
 					
 						<a href="#"><small>Forgot password?</small></a>
 						<p class="text-muted text-center"><small>Do not have an account?</small></p>
-						<a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
+						<a class="btn btn-sm btn-white btn-block" href="${pageContext.request.contextPath}/signup.nest">Sign up</a>
 					</form>
 					<p class="m-t"> <small>Dragonsnest app framework base on Bootstrap 3 &copy; 2014</small> </p>
 								

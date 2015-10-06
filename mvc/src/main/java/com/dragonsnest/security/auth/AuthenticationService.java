@@ -39,23 +39,24 @@ public class AuthenticationService implements UserDetailsService
 		return ret;
 	}*/
 	
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
+    public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException
     {
         StandardPasswordEncoder encoder = new StandardPasswordEncoder();
         
         AuthenticateUser user = new AuthenticateUser();
         
-        User manager = service.selectUser(username);
+        User manager = service.selectUser(userid);
         
         if(manager == null) {
-        	throw new UsernameNotFoundException(username);
+        	throw new UsernameNotFoundException(userid);
         }
         
         logger.debug("manager [{}]", manager.toString());
         
-        user.setUsername(username);
+        user.setUsername(manager.getName());
+        user.setUserid(userid);
         user.setPassword(encoder.encode(manager.getPassword()));
-        user.setManager(manager);
+//        user.setManager(manager);
         
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		authorities.add(new SimpleGrantedAuthority(manager.getRole()));

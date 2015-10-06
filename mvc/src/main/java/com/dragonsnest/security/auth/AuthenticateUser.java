@@ -18,8 +18,9 @@ public class AuthenticateUser implements UserDetails
 	 */
 	private static final long serialVersionUID = 1L;
 	private String username;
+	private String userid;
     private String password;
-    private User manager;
+//    private User manager;
     
     public Collection<? extends GrantedAuthority> getAuthorities()
     {
@@ -48,13 +49,21 @@ public class AuthenticateUser implements UserDetails
     {
         return username;
     }
-    
-    public User getManager() {
-		return manager;
+
+//    public User getManager() {
+//		return manager;
+//	}
+//
+//	public void setManager(User manager) {
+//		this.manager = manager;
+//	}
+
+	public String getUserid() {
+		return userid;
 	}
 
-	public void setManager(User manager) {
-		this.manager = manager;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 
 	public static long getSerialversionuid() {
@@ -80,4 +89,11 @@ public class AuthenticateUser implements UserDetails
     {
         return true;
     }
+
+	@Override
+	public String toString() {
+		return "AuthenticateUser [username=" + username + ", userid=" + userid + ", password=" + password + "]";
+	}
+    
+
 }

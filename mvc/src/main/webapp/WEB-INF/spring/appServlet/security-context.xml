@@ -15,7 +15,16 @@
 			authentication-success-handler-ref="loginSuccessHandler"
 			authentication-failure-handler-ref="loginFailureHandler" />
 		<logout logout-success-url="/"/>
+		<logout delete-cookies="JSESSIONID" /> <!-- CLEAR SESSION WHEN LOGOUT -->
+		<session-management invalid-session-url="/invalidSession.htm" >
+			<concurrency-control 
+						max-sessions="1"  
+						error-if-maximum-exceeded="false"
+						expired-url="/login_duplicate"
+			/>
+		</session-management>
 	</http>
+	
 
 	<beans:bean id="loginSuccessHandler"
 		class="com.dragonsnest.security.handler.LoginSuccessHandler"></beans:bean>

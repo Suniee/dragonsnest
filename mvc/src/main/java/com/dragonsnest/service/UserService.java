@@ -21,20 +21,20 @@ public class UserService {
 		return mapper.selectUser(id);
 	}
 	
-	@Transactional(propagation=Propagation.REQUIRED)
-	public int insertUser(User user) {
-		return mapper.insertUser(user);
-	}
+//	@Transactional(propagation=Propagation.REQUIRED)
+//	public int insertUser(User user) {
+//		return mapper.insertUser(user);
+//	}
+	
+//	@Transactional(propagation=Propagation.REQUIRED)
+//	public int insertUser1(String username, String password) {
+//		String name = "", phone = "", role = "";
+//		return mapper.insertUser1(username, password, name, phone, role);
+//	}
 	
 	@Transactional(propagation=Propagation.REQUIRED)
-	public int insertUser1(String username, String password) {
-		String name = "", phone = "", role = "";
-		return mapper.insertUser1(username, password, name, phone, role);
-	}
-	
-	@Transactional(propagation=Propagation.REQUIRED)
-	public int insertUser2(Map<String, Object> params) {
-		return mapper.insertUser2(params);
+	public int insertUser(Map<String, Object> params) {
+		return mapper.insertUser(params);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRED)

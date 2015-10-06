@@ -1,7 +1,5 @@
 package com.dragonsnest.model;
 
-import org.springframework.stereotype.Repository;
-
 public class User {
 	int pid;
 	String id;
